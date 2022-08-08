@@ -148,15 +148,17 @@ export default function BasicModal(props) {
   const onChangePetDescription = (event) => {
     setPetDescriptionFlag(false)
     setPetDescription(event.target.value)
-    if (petDescription === '') {
+    if (event.target.value === '') {
+      
       setPetDescriptionFlag(true)
     }
   }
 
   const handleChange = (event) => {
+    setPetTypeIdFlag(false)
     setPetTypeName(event.target.value)
     setPetTypeId(event.target.value)
-    if ( event.target.value ) {
+    if ( !event.target.value ) {
       setPetTypeIdFlag(true)
     }
   }

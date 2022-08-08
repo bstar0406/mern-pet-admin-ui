@@ -42,7 +42,7 @@ export default function BasicModal(props) {
   const [literMom, setLiterMom] = useState(null);
   const [literMomFlag, setLiterMomFlag] = useState(false);
   const [literDOB, setLiterDOB] = useState(null);
-  //const [literDOBFlag, setLiterDOBFlag] = useState(false);
+  const [literDOBFlag, setLiterDOBFlag] = useState(false);
   const [breeders, setBreeders] = useState([]);
 
   const [severity, setSeverity] = useState("success")
@@ -94,10 +94,10 @@ export default function BasicModal(props) {
       flag = false;
       setLiterMomFlag(true)
     }
-    // if (literDOB === '') {
-    //   flag = false;
-    //   //setLiterDOBFlag(true)
-    // }
+    if (literDOB === '') {
+      flag = false;
+      setLiterDOBFlag(true)
+    }
     if (!flag) {
       return;
     }
@@ -151,24 +151,24 @@ export default function BasicModal(props) {
     }
   }
   const onChangeLiterDad = (event) => {
-    //setLiterDOBFlag(false)
+    setLiterDadFlag(false)
     setLiterDad(event.target.value)
-    if (literDad === '') {
+    if (event.target.value === '') {
       setLiterDadFlag(true)
     }
   }
   const onChangeLiterMom = (event) => {
     setLiterMomFlag(false)
     setLiterMom(event.target.value)
-    if (literMom === '' ) {
+    if (event.target.value === '' ) {
       setLiterMomFlag(true)
     }
   }
   const onChangeLiterDOB = (value) => {
-    //setLiterDOBFlag(false)
+    setLiterDOBFlag(false)
     setLiterDOB(value)
-    //if (literDOB === '')
-      //setLiterDOBFlag(true)
+    if (value === '')
+      setLiterDOBFlag(true)
   }
   return (
     <div>
@@ -235,6 +235,7 @@ export default function BasicModal(props) {
               <MDBox mb={2}>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                   <DatePicker
+                    error={literDOBFlag}
                     label="LiterDOB"
                     value={literDOB}
                     onChange={onChangeLiterDOB}
@@ -243,12 +244,12 @@ export default function BasicModal(props) {
                 </LocalizationProvider>
               </MDBox>
 
-              <MDBox mt={4} mb={1}>
+              <MDBox mt={2} mb={1}>
                 <MDButton onClick={saveData} variant="gradient" color="info" fullWidth>
                   Save
                 </MDButton>
               </MDBox>
-              <MDBox mt={4} mb={1}>
+              <MDBox mt={2} mb={1}>
                 <MDButton onClick={handleClose} variant="gradient" color="white" fullWidth>
                   Cancel
                 </MDButton>

@@ -141,21 +141,21 @@ export default function BasicModal(props) {
   const onChangePetType = (event) => {
     setPetTypeFlag(false)
     setPetType(event.target.value)
-    if (petType === '') {
+    if (event.target.value === '') {
       setPetTypeFlag(true)
     }
   }
   const onChangePetMom = (event) => {
     setPetMomCalledFlag(false)
     setPetMomCalled(event.target.value)
-    if (petMomCalled === '') {
+    if (event.target.value === '') {
       setPetMomCalledFlag(true)
     }
   }
   const onChangePetDad = (event) => {
     setPetDadCalledFlag(false)
     setPetDadCalled(event.target.value)
-    if (petDadCalled === '')
+    if (event.target.value === '')
       setPetDadCalledFlag(true)
   }
   return (

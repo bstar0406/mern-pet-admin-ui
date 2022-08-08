@@ -45,7 +45,7 @@ export default function BasicModal(props) {
   const [babyId, setBabyId] = useState('');
   const [babyIdFlag, setBabyIdFlag] = useState(false);
   const [reservationDate, setReservationDate] = useState('');
-  //const [reservationDateFlag, setReservationDateFlag] = useState(false);
+  const [reservationDateFlag, setReservationDateFlag] = useState(false);
   const [reservationFirstName, setReservationFirstName] = useState('');
   const [reservationFirstNameFlag, setReservationFirstNameFlag] = useState(false);
   const [reservationLastName, setReservationLastName] = useState('');
@@ -57,7 +57,7 @@ export default function BasicModal(props) {
   const [reservationLocation, setReservationLocation] = useState('');
   const [reservationLocationFlag, setReservationLocationFlag] = useState(false);
   const [domainId, setDomainId] = useState('');
-  //const [domainIdFlag, setDomainIdFlag] = useState(false);
+  const [domainIdFlag, setDomainIdFlag] = useState(false);
   const [reservationPaymentStatus, setReservationPaymentStatus] = useState('completed');
   const [city, setCity] = useState('');
   const [cityFlag, setCityFlag] = useState(false);
@@ -426,7 +426,7 @@ export default function BasicModal(props) {
                 <FormControl fullWidth>
                   <InputLabel id="demo-simple-select-label">Domain</InputLabel>
                   <Select
-                    error={babyIdFlag}
+                    error={domainIdFlag}
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={domainName}

@@ -34,6 +34,7 @@ function Tables() {
  
   useEffect(() => {
     axios.get(`${baseURL}/api/domains/`).then(async (response) => {
+      console.log(response.data)
       setData(response.data.entities)
       rowItems(response.data.entities)
     }
@@ -55,7 +56,7 @@ function Tables() {
         ),
         petType: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            {item.petTypeId.petType}
+            {item.petTypeId ? item.petTypeId.petType : ''}
           </MDTypography>
         ),
         action: (
@@ -132,8 +133,9 @@ function Tables() {
 
     let temp = data;
     temp = temp.filter(item => {
-      if(item.domainName.includes(val) || 
-      item.petTypeId.petType.includes(val))
+      if(item.domainName.includes(val) ||
+      (item.petTypeId && item.petTypeId.petType.includes(val))
+      )
       return item
     });
     rowItems(temp);

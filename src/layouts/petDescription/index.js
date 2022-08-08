@@ -55,7 +55,7 @@ function Tables() {
         ),
         petType: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            {item.petTypeId.petType}
+            {item.petTypeId ? item.petTypeId.petType : ''}
           </MDTypography>
         ),
         action: (
@@ -115,7 +115,7 @@ function Tables() {
 
   const editSelectedItem = (item) => {
     const temp = data.map(obj => {
-      if (obj._id === item.petDescriptionId) {
+      if (obj._id === item._id) {
         return {
           ...obj,
           petDescription: item.petDescription,
@@ -132,7 +132,7 @@ function Tables() {
     let temp = data;
     temp = temp.filter(item => {
       if(item.petDescription.includes(val) || 
-      item.petTypeId.petType.includes(val))
+      (item.petTypeId && item.petTypeId.petType.includes(val)))
       return item
     });
     rowItems(temp);

@@ -48,22 +48,22 @@ function Tables() {
       return {
         dadBreederName: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            {item.literDad.breederName}
+            {item.literDad ? item.literDad.breederName : ''}
           </MDTypography>
         ),
         dadBreederPetType: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            {item.literDad.petTypeId.petType}
+            {item.literDad ?  item.literDad.petTypeId ? item.literDad.petTypeId.petType: '' : ''}
           </MDTypography>
         ),
         momBreederName: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            {item.literMom.breederName}
+            {item.literMom ? item.literMom.breederName : ''}
           </MDTypography>
         ),
         momBreederPetType: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            {item.literMom.petTypeId.petType}
+            {item.literMom ?  item.literDad.petTypeId ? item.literMom.petTypeId.petType : '' : ''}
           </MDTypography>
         ),
         literDOB: (

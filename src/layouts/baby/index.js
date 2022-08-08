@@ -63,17 +63,17 @@ function Tables() {
         ),
         babyDOB: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            {item.literId.literDOB}
+            {item.literId ? item.literId.literDOB : ''}
           </MDTypography>
         ),
         dadPetType: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-            {item.literId.literDad.petTypeId.petType}
+            {item.literId ? item.literId.literDad ?  item.literId.literDad.petTypeId ? item.literId.literDad.petTypeId.petType : '' : '' : ''}
           </MDTypography>
         ),
         momPetType: (
           <MDTypography component="a" href="#" variant="caption" color="text" fontWeight="medium">
-             {item.literId.literMom.petTypeId.petType}
+             {item.literId ? item.literId.literMom ?  item.literId.literMom.petTypeId ? item.literId.literMom.petTypeId.petType : '' : '' : ''}
           </MDTypography>
         ),
         babyName: (

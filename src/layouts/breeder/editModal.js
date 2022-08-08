@@ -15,7 +15,7 @@ import MuiAlert from '@mui/material/Alert';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -136,15 +136,7 @@ export default function BasicModal(props) {
     }
     if (props.isAdd === false && props.id !== '') {
       new Promise(resolve => {
-        const item = {
-          breederId: props.id,
-          breederName: breederName,
-          petTypeId: petTypeId,
-          breederGender: breederGender,
-          breederDOB: breederDOB,
-          breederDesc: breederDesc,
-          breederPhoto: breederPhoto,
-        }
+
         const formData = new FormData();
         formData.append("breederId", props.id);
         formData.append("breederName",breederName);
@@ -173,15 +165,6 @@ export default function BasicModal(props) {
       })
     } else {
       new Promise(resolve => {
-
-        const item = {
-          breederName: breederName,
-          petTypeId: petTypeId,
-          breederGender: breederGender,
-          breederDOB: breederDOB,
-          breederDesc: breederDesc,
-          breederPhoto: file,
-        }
 
         const formData = new FormData();
         formData.append("breederName",breederName);
@@ -214,7 +197,8 @@ export default function BasicModal(props) {
   const onChangeBreederName = (event) => {
     setBreederNameFlag(false)
     setBreederName(event.target.value)
-    if (breederName === '') {
+    if (event.target.value === '') {
+      console.log(breederNameFlag+"--"+breederName)
       setBreederNameFlag(true)
     }
   }
@@ -245,9 +229,10 @@ export default function BasicModal(props) {
   }
 
   const onChangePetType = (event) => {
+    setPetTypeIdFlag(false)
     setPetTypeName(event.target.value)
     setPetTypeId(event.target.value)
-    if (event.target.value) {
+    if (!event.target.value) {
       setPetTypeIdFlag(true)
     }
   }
@@ -313,9 +298,9 @@ export default function BasicModal(props) {
                   </Select>
                 </FormControl>
               </MDBox>
-              <MDBox mb={2}>
-                <FormControl>
-                  <FormLabel id="demo-controlled-radio-buttons-group">Gender</FormLabel>
+              <MDBox mb={2} row>
+                <FormControl ml={2}>
+                  {/* <FormLabel id="demo-controlled-radio-buttons-group">Gender</FormLabel> */}
                   <RadioGroup
                     row
                     aria-labelledby="demo-controlled-radio-buttons-group"
@@ -327,10 +312,9 @@ export default function BasicModal(props) {
                     <FormControlLabel value="male" control={<Radio />} label="Male" />
                   </RadioGroup>
                 </FormControl>
-              </MDBox>
-              <MDBox mb={2}>
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                <LocalizationProvider dateAdapter={AdapterDateFns} ml={2}> 
                   <DatePicker
+                    error={false}
                     label="BreederDOB"
                     value={breederDOB}
                     onChange={onChangeBreederDOB}
@@ -352,25 +336,15 @@ export default function BasicModal(props) {
                 />
               </MDBox>
               <MDBox mb={2}>
-                {/* <TextField
-                  error={breederPhotoFlag}
-                  id="outlined-multiline-static"
-                  label="BreederPhoto"
-                  value={breederPhoto}
-                  onChange={onChangeBreederPhoto}
-                  helperText=""
-                  fullWidth
-                />
-                 */}
                  <input type="file" onChange={onChangeBreederPhoto} hidden ref={imageFileRef}/>
                  <img src={breederPhoto?breederPhoto:DefaultImage} alt="image" onClick={imageClick} width={100} height={100} />
               </MDBox>
-              <MDBox mt={4} mb={1}>
+              <MDBox mt={2} mb={1}>
                 <MDButton onClick={saveData} variant="gradient" color="info" fullWidth>
                   Save
                 </MDButton>
               </MDBox>
-              <MDBox mt={4} mb={1}>
+              <MDBox mt={2} mb={1}>
                 <MDButton onClick={handleClose} variant="gradient" color="white" fullWidth>
                   Cancel
                 </MDButton>

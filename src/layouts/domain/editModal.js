@@ -148,15 +148,16 @@ export default function BasicModal(props) {
   const onChangeDomainName = (event) => {
     setDomainNameFlag(false)
     setDomainName(event.target.value)
-    if (domainName === '') {
+    if (event.target.value === '') {
       setDomainNameFlag(true)
     }
   }
 
   const handleChange = (event) => {
+    setPetTypeIdFlag(false)
     setPetTypeName(event.target.value)
     setPetTypeId(event.target.value)
-    if ( event.target.value ) {
+    if ( !event.target.value ) {
       setPetTypeIdFlag(true)
     }
   }
